@@ -11,7 +11,7 @@ import utils.EMF_Creator;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public abstract class Provider implements RestRepository {
+public abstract class Provider {
 
     public static final EntityManagerFactory EMF;
     public static final Gson GSON;
