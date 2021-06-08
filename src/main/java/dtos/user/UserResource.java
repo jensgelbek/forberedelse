@@ -45,7 +45,7 @@ public class UserResource extends Provider {
    @GET
    //@RolesAllowed("user")
    public Response hent(){
-       return Response.ok("fantatsisk").build();
+       return Response.ok("{\"msg\": \"Fantastisk \"}").build();
    }
    
   
