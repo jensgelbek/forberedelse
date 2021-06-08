@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import dtos.user.UserDTO;
 
 import facades.UserFacade;
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.core.Context;
@@ -41,7 +42,11 @@ public class UserResource extends Provider {
     }
 
     
-   
+   @GET
+   @RolesAllowed("user")
+   public Response hent(){
+       return Response.ok("fantatsisk").build();
+   }
    
   
 
