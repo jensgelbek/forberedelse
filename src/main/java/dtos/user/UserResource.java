@@ -43,7 +43,7 @@ public class UserResource extends Provider {
 
     
    @GET
-   @RolesAllowed("user")
+   //@RolesAllowed("user")
    public Response hent(){
        return Response.ok("fantatsisk").build();
    }
