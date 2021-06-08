@@ -19,7 +19,7 @@ public class UserDTO {
     private String userName;
     private String password;
     private List<RoleDTO> roles = new ArrayList<>();
-    private double bonusPoints;
+
 
     public UserDTO() {
     }
@@ -71,14 +71,7 @@ public class UserDTO {
         this.roles = roles;
     }
 
-    public double getBonusPoints() {
-        return bonusPoints;
-    }
-
-    public void setBonusPoints(double bonusPoints) {
-        this.bonusPoints = bonusPoints;
-    }   
-    
+   
     @Override
     public int hashCode() {
         int hash = 7;
