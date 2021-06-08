@@ -100,6 +100,7 @@ public class DemoResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("fetchMany")
+    @RolesAllowed("admin")
     public String getFetchMany() {
         String[] str = {
             "https://animechan.vercel.app/api/random",
