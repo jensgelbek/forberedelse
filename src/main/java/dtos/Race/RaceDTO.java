@@ -5,10 +5,85 @@
  */
 package dtos.Race;
 
+import entities.Race;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 /**
  *
  * @author PC
  */
 public class RaceDTO {
-    
+
+    private Long id;
+    private Date date;
+    private String name;
+    private double distance;
+    private String raceTime;
+
+    public RaceDTO(Date date, String name, double distance, String time) {
+        this.date = date;
+        this.name = name;
+        this.distance = distance;
+        this.raceTime = time;
+    }
+
+    public RaceDTO(Race race) {
+        this.id = race.getId();
+        this.date = race.getDate();
+        this.name = race.getName();
+        this.raceTime = race.getTime();
+        this.distance = race.getDistance();
+    }
+
+    public static List<RaceDTO> getDtos(List<Race> races) {
+        List<RaceDTO> raceDTOs = new ArrayList();
+        races.forEach(race -> raceDTOs.add(new RaceDTO(race)));
+        return raceDTOs;
+    }
+
+   
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public String getRaceTime() {
+        return raceTime;
+    }
+
+    public void setRaceTime(String raceTime) {
+        this.raceTime = raceTime;
+    }
+
 }

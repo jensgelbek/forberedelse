@@ -5,13 +5,17 @@
  */
 package entities;
 
+import dtos.Race.RaceDTO;
 import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -26,8 +30,8 @@ public class Race implements Serializable {
     private Long id;
     private Date date;
     private String name;
-    private int distance;
-    private int time;
+    private double distance;
+    private String raceTime;
 
     public Race() {
     }
@@ -58,23 +62,30 @@ public class Race implements Serializable {
 
     @Override
     public String toString() {
-        return "Race{" + "id=" + id + ", date=" + date + ", name=" + name + ", distance=" + distance + ", time=" + time + '}';
+        return "Race{" + "id=" + id + ", date=" + date + ", name=" + name + ", distance=" + distance + ", time=" + raceTime + '}';
     }
 
-    public Race(Long id, Date date, String name, int distance, int time) {
+    public Race(Long id, Date date, String name, int distance, String time) {
         this.id = id;
         this.date = date;
         this.name = name;
         this.distance = distance;
-        this.time = time;
+        this.raceTime = time;
+    }
+    
+    public Race (RaceDTO raceDTO){
+         this.date = raceDTO.getDate();
+        this.name = raceDTO.getName();
+        this.distance = raceDTO.getDistance();
+        this.raceTime = raceDTO.getRaceTime();
+    }
+    
+    public String getTime() {
+        return raceTime;
     }
 
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
+    public void setTime(String time) {
+        this.raceTime = time;
     }
 
     
@@ -96,7 +107,7 @@ public class Race implements Serializable {
         this.name = name;
     }
 
-    public int getDistance() {
+    public double getDistance() {
         return distance;
     }
 
