@@ -5,6 +5,7 @@
  */
 package dtos.Race;
 
+import dtos.Runner.RunnerDTO;
 import entities.Race;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -22,13 +23,17 @@ public class RaceDTO {
     private String name;
     private double distance;
     private String raceTime;
+    private RunnerDTO runnerDTO;
 
-    public RaceDTO(Date date, String name, double distance, String time) {
+    public RaceDTO(Date date, String name, double distance, String raceTime, RunnerDTO runnerDTO) {
         this.date = date;
         this.name = name;
         this.distance = distance;
-        this.raceTime = time;
+        this.raceTime = raceTime;
+        this.runnerDTO = runnerDTO;
     }
+    
+    
 
     public RaceDTO(Race race) {
         this.id = race.getId();
@@ -36,6 +41,8 @@ public class RaceDTO {
         this.name = race.getName();
         this.raceTime = race.getTime();
         this.distance = race.getDistance();
+        
+        
     }
 
     public static List<RaceDTO> getDtos(List<Race> races) {
@@ -84,6 +91,11 @@ public class RaceDTO {
 
     public void setRaceTime(String raceTime) {
         this.raceTime = raceTime;
+    }
+
+    @Override
+    public String toString() {
+        return "RaceDTO{" + "id=" + id + ", date=" + date + ", name=" + name + ", distance=" + distance + ", raceTime=" + raceTime + '}';
     }
 
 }

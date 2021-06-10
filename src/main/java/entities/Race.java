@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -32,6 +34,8 @@ public class Race implements Serializable {
     private String name;
     private double distance;
     private String raceTime;
+    @ManyToOne
+    private Runner runner;
 
     public Race() {
     }
@@ -60,18 +64,25 @@ public class Race implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Race{" + "id=" + id + ", date=" + date + ", name=" + name + ", distance=" + distance + ", time=" + raceTime + '}';
-    }
+   
 
-    public Race(Long id, Date date, String name, int distance, String time) {
-        this.id = id;
+    public Race( Date date, String name, double distance, String raceTime, Runner runner) {
+      
         this.date = date;
         this.name = name;
         this.distance = distance;
-        this.raceTime = time;
+        this.raceTime = raceTime;
+        this.runner = runner;
     }
+
+    public Race(Date date, String name, double distance, String raceTime) {
+        this.date = date;
+        this.name = name;
+        this.distance = distance;
+        this.raceTime = raceTime;
+    }
+
+    
     
     public Race (RaceDTO raceDTO){
          this.date = raceDTO.getDate();
@@ -121,6 +132,27 @@ public class Race implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getRaceTime() {
+        return raceTime;
+    }
+
+    public void setRaceTime(String raceTime) {
+        this.raceTime = raceTime;
+    }
+
+    public Runner getRunner() {
+        return runner;
+    }
+
+    public void setRunner(Runner runner) {
+        this.runner = runner;
+    }
+
+    @Override
+    public String toString() {
+        return "Race{" + "id=" + id + ", date=" + date + ", name=" + name + ", distance=" + distance + ", raceTime=" + raceTime + '}';
     }
 
     

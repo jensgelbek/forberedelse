@@ -1,11 +1,17 @@
 package facades;
 
+import dtos.Race.RaceDTO;
 import dtos.RenameMeDTO;
+import dtos.Runner.RunnerDTO;
+import entities.Race;
+import entities.Runner;
 import entities.renameme.RenameMeRepository;
 import java.util.ArrayList;
 import java.util.List;
 import utils.EMF_Creator;
 import entities.renameme.RenameMe;
+import java.time.LocalDate;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -86,5 +92,20 @@ public class FacadeExampleTest {
         RenameMeDTO actual = facade.createRenameMe(expected);
         assertEquals(expected.getDummyStr1(), actual.getDummyStr1());
         assertNotNull(actual.getId());
+    }
+    @Test
+    void baretest(){
+        Runner runner=new Runner("jens  ggg gelbek",LocalDate.now());
+        Race race=new Race(new Date(),"Damhus meget Ultra",60.9,"6:12:12");
+        runner.addRace(race);
+       // System.out.println(runner);
+        RunnerFacade runnerFacade=RunnerFacade.getInstance(emf);
+        RaceFacade raceFacade=RaceFacade.getRaceFacade(emf);
+        //System.out.println(raceFacade.createRace(new RaceDTO(race)));
+      
+        //raceFacade.createRace(new RaceDTO(race));
+        runnerFacade.createRunner(runner);
+        System.out.println(runnerFacade.getRunnerCount());
+       
     }
 }
